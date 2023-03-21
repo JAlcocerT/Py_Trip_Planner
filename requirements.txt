@@ -1,5 +1,4 @@
-dash==2.7.0
-dash_html_components==2.0.6
+dash==2.7.0 
 jupyter_dash==0.4.2
 
 dash_leaflet==0.1.19
