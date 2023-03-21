@@ -109,4 +109,6 @@ def update_weather_plots(click_lat_lng, start_date, end_date, boxplot_variable):
 
 # Start of the application
 if _name_ == '__main__':
-    app.run_server(debug=False, host="0.0.0.0", port=8050)
+    #app.run_server(debug=False, host="0.0.0.0", port=8050)
+    app.run_server(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
+
