@@ -1,7 +1,7 @@
 dash==2.7.0 
 jupyter_dash==0.4.2
 
-dash_leaflet==0.1.19
+dash_leaflet==0.1.23
 
 pandas==1.2.4
 plotly==5.11.0
