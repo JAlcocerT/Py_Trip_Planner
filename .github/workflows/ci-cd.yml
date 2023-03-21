@@ -31,3 +31,10 @@ jobs:
         context: .
         push: true
         tags: ghcr.io/jalcocert/py_trip_planner:${{ github.sha }}
+        
+    - uses: actions/checkout@v1
+    - name: Build & Push Image to DockerHub
+      run: |
+        echo "${{ secrets.CICD_DASH_TOKEN_DOCKERHUB }}" | docker login -u "reisikei" --password-stdin
+        docker image build -t reisikei/pyrouteplanner:latest .
+        docker push reisikei/pyrouteplanner:latest
