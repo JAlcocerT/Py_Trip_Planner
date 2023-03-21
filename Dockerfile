@@ -10,6 +10,6 @@ COPY . ./
 # Install production dependencies.
 RUN pip install -r requirements.txt
 
-EXPOSE 8080
+EXPOSE 8050
 
-CMD python app.py
+CMD python app.py --bind :$PORT --workers 1 --threads 8 --timeout 0 main:app
