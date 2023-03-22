@@ -1,5 +1,5 @@
 dash==2.7.0 
-jupyter_dash==0.4.2
+#jupyter_dash==0.4.2
 
 dash_leaflet==0.1.23
 

@@ -36,5 +36,5 @@ jobs:
     - name: Build & Push Image to DockerHub
       run: |
         echo "${{ secrets.CICD_DASH_TOKEN_DOCKERHUB }}" | docker login -u "reisikei" --password-stdin
-        docker image build -t reisikei/pyrouteplanner:latest .
-        docker push reisikei/pyrouteplanner:latest
+        docker image build -t reisikei/pytripplanner:latest .
+        docker push reisikei/pytripplanner:latest

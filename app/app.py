@@ -1,16 +1,19 @@
 import dash
-import dash_html_components as html
+#import dash_html_components as html
 #import dash_core_components as dcc
+from dash import html
 from dash import dcc
 from dash.dependencies import Input, Output
 from datetime import datetime
 from meteostat import Point, Daily
 
+
 import plotly.express as px
 import dash_leaflet as dl
-from jupyter_dash import JupyterDash
+#from jupyter_dash import JupyterDash
 
-app = JupyterDash(__name__, external_stylesheets=['https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
+#app = JupyterDash(__name__, external_stylesheets=['https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
+app = dash.Dash(__name__, external_stylesheets=['https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
 
 def plot_tmax_boxplot(lat, lon, start, end, variable):
     location = Point(lat, lon, 70)
@@ -108,7 +111,7 @@ def update_weather_plots(click_lat_lng, start_date, end_date, boxplot_variable):
     
 
 # Start of the application
-if _name_ == '__main__':
-    #app.run_server(debug=False, host="0.0.0.0", port=8050)
-    app.run_server(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
-
+if __name__ == '__main__':
+    
+    app.run_server(debug=False, host="0.0.0.0", port=8050)
+    #app.run_server(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8050)))
