@@ -8,6 +8,13 @@ Using historical weather data together with location data in a DASH app - Trips 
 * [Leaflet](https://github.com/thedirtyfew/dash-leaflet)
 * [Meteostat](https://github.com/meteostat)
 
+
+## Guide
+
+To run the jupyter notebook in linux, you will need:
+
+* apt-get install python3-pip
+
 ## Ways to Contribute
 
 * Please feel free to fork the code - try it out for yourself and improve or add others tabs. The data that is queried give many possibilities to create awsome interactive visualizations.
