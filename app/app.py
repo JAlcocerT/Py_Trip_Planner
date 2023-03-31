@@ -1,15 +1,16 @@
 import dash
-#import dash_html_components as html
-#import dash_core_components as dcc
-from dash import html
+from dash import html 
 from dash import dcc
 from dash.dependencies import Input, Output
-from datetime import datetime
+from datetime import datetime, timedelta, date
 from meteostat import Point, Daily
-
 
 import plotly.express as px
 import dash_leaflet as dl
+
+import plotly.express as px
+import dash_leaflet as dl
+
 #from jupyter_dash import JupyterDash
 
 #app = JupyterDash(__name__, external_stylesheets=['https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
@@ -21,11 +22,14 @@ def plot_tmax_boxplot(lat, lon, start, end, variable):
     data = Daily(location, start, end)
     data = data.fetch()
 
-    data=data.reset_index()
+    data = data.reset_index()
 
-    data['month'] = data['time'].dt.month
+    data['month'] = data['time'].dt.month_name()
 
     fig = px.box(data, x='month', y=variable, title='Monthly Tmax Boxplot')
+
+    fig.update_xaxes(title_text='Month')
+    fig.update_yaxes(title_text='Tmax' if variable == 'tmax' else 'Tmin')
     return fig
 
 def plot_weather_data(lat, lon, start, end):
@@ -34,26 +38,34 @@ def plot_weather_data(lat, lon, start, end):
     data = Daily(location, start, end)
     data = data.fetch()
 
-    data=data.reset_index()
+    data = data.reset_index()
 
-    fig = px.line(data, x='time', y=['tmin','tmax'],
-                  title=f'Temperature min/max for the Given Location ({lat:.2f},{lon:.2f})',
-                  labels={'time': 'Date', 'tmin': 'Min Temp', 'tmax': 'Max Temp'})
+    # Rename the columns
+    data = data.rename(columns={'tmin': 'Tmin',
+                           'tmax': 'Tmax'})
 
+    fig = px.line(data, x='time', y=['Tmin', 'Tmax'],
+                  title=f'Temperature Min/Max for the Given Location ({lat:.2f}, {lon:.2f})',
+                  labels={'time': 'Date', 'value': 'Temperature'})
     fig.update_yaxes(title_text='Temperature')
 
+    return fig
 
-    return (fig)
 
 app.layout = html.Div([
     html.H1('Trip Planner', style={'textAlign': 'center', 'padding': '20px'}),
     dcc.DatePickerRange(
         id='date-picker',
         min_date_allowed=datetime(2000, 1, 1),
-        max_date_allowed=datetime(2022, 12, 31),
+        max_date_allowed= date.today() - timedelta(days=7),
         start_date=datetime(2021, 1, 1),
-        end_date=datetime(2021, 12, 31),
-        display_format='MMM DD, YYYY'
+        end_date=datetime(2022, 12, 31),
+        display_format='MMM DD, YYYY',
+        style = {
+                        'font-size': '6px','display': 'inline-block', 'border-radius' : '2px', 
+                        'border' : '1px solid #ccc', 'color': '#333', 
+                        'border-spacing' : '0', 'border-collapse' :'separate'
+                        } 
     ),
     dl.Map(
         [dl.TileLayer(), dl.LayerGroup(id="layer")],
@@ -73,7 +85,15 @@ app.layout = html.Div([
         ],
         value='tmax'
     ),
-    dcc.Graph(id='tmax-boxplot')
+    dcc.Graph(id='tmax-boxplot'),
+    html.Div([
+        html.H4("About"),
+        html.A("My Blog - FossEngineer", href="https://fossengineer.com", target="_blank"),
+        html.Br(),
+        html.A("About this App - FossEngineer", href="https://fossengineer.com/python-trip-planner/", target="_blank"),
+        html.Br(),
+        html.A("Source Code", href="https://github.com/JAlcocerT/Py_Trip_Planner/", target="_blank"),
+    ], style={'float': 'right'})
 ])
 
 @app.callback(
@@ -108,7 +128,6 @@ def update_weather_plots(click_lat_lng, start_date, end_date, boxplot_variable):
     box_plot = plot_tmax_boxplot(lat, lon, start, end, boxplot_variable)
     
     return line_plot, box_plot
-    
 
 # Start of the application
 if __name__ == '__main__':

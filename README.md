@@ -1,19 +1,15 @@
 # Py_Trip_Planner
 
-Using historical weather data together with location data in a DASH app - Trips planning with Open Source Data.
+Using historical weather data together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** - Trips planning with Open Source Tools & Data.
+
+* Deployed at <https://trip-planner.fossengineer.com>
+* Further Description at: <https://fossengineer.com/python-trip-planner/>
 
 ## Powered Thanks To
 
 * [Dash](https://github.com/plotly/dash)
 * [Leaflet](https://github.com/thedirtyfew/dash-leaflet)
 * [Meteostat](https://github.com/meteostat)
-
-
-## Guide
-
-To run the jupyter notebook in linux, you will need:
-
-* apt-get install python3-pip
 
 ## Ways to Contribute
 
