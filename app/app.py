@@ -26,10 +26,13 @@ def plot_tmax_boxplot(lat, lon, start, end, variable):
 
     data['month'] = data['time'].dt.month_name()
 
-    fig = px.box(data, x='month', y=variable, title='Monthly Tmax Boxplot')
+    fig = px.box(data, x='month', y=variable, title='Monthly Summaries -  Boxplot')
 
     fig.update_xaxes(title_text='Month')
-    fig.update_yaxes(title_text='Tmax' if variable == 'tmax' else 'Tmin')
+    fig.update_yaxes(title_text=('Max Temperature (°C)' if variable == 'tmax' else
+                              'Min Temperature (°C)' if variable == 'tmin' else
+                              'Wind (km/h)' if variable == 'wspd' else
+                              'Rain (mm)'))
     return fig
 
 def plot_weather_data(lat, lon, start, end):
@@ -46,8 +49,14 @@ def plot_weather_data(lat, lon, start, end):
 
     fig = px.line(data, x='time', y=['Tmin', 'Tmax'],
                   title=f'Temperature Min/Max for the Given Location ({lat:.2f}, {lon:.2f})',
-                  labels={'time': 'Date', 'value': 'Temperature'})
-    fig.update_yaxes(title_text='Temperature')
+                  labels={'time': 'Date'})
+    fig.update_yaxes(title_text='Temperature °C')
+
+    fig.data[0].name = 'Tmin'
+    fig.data[1].name = 'Tmax'
+
+    # Update the legend title
+    fig.update_layout(legend_title='Legend')
 
     return fig
 
@@ -76,12 +85,14 @@ app.layout = html.Div([
         #click_lat_lng=True,
     ),
     dcc.Graph(id='weather-plot'),
-    html.Label('Select variable for boxplot:'),
+    html.Label('Select a variable to display in the Boxplot:'),
     dcc.Dropdown(
         id='boxplot-variable',
         options=[
-            {'label': 'Tmax', 'value': 'tmax'},
-            {'label': 'Tmin', 'value': 'tmin'}
+            {'label': 'Temperature Max °C', 'value': 'tmax'},
+            {'label': 'Temperature Min °C', 'value': 'tmin'},
+            {'label': 'Wind (km/h)', 'value': 'wspd'},
+            {'label': 'Rain (mm)', 'value': 'prcp'},
         ],
         value='tmax'
     ),
