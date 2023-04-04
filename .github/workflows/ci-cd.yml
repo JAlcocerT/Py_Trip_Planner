@@ -25,16 +25,17 @@ jobs:
         echo "${{ secrets.CICD_DASH_TOKEN_DOCKERHUB }}" | docker login -u "reisikei" --password-stdin
         docker image build -t reisikei/pytripplanner:2-amd64 .
         docker push reisikei/pytripplanner:2-amd64
-  build-and-push-rpi:
-    runs-on: self-hosted
 
-    steps:
-    - name: Checkout repository 
-      uses: actions/checkout@v2
+  # build-and-push-rpi:
+  #   runs-on: self-hosted
+
+  #   steps:
+  #   - name: Checkout repository 
+  #     uses: actions/checkout@v2
         
-    - name: Build & Push Image to DockerHub    
-      uses: actions/checkout@v1
-      run: |
-        echo "${{ secrets.CICD_DASH_TOKEN_DOCKERHUB }}" | docker login -u "reisikei" --password-stdin docker.io
-        docker image build -t reisikei/pytripplanner:2-arm32 .
-        docker push reisikei/pytripplanner:2-arm32
+  #   - name: Build & Push Image to DockerHub    
+  #     uses: actions/checkout@v1
+  #     run: |
+  #       echo "${{ secrets.CICD_DASH_TOKEN_DOCKERHUB }}" | docker login -u "reisikei" --password-stdin docker.io
+  #       docker image build -t reisikei/pytripplanner:2-arm32 .
+  #       docker push reisikei/pytripplanner:2-arm32
