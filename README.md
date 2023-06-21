@@ -12,6 +12,7 @@ Using historical weather data together with location data in a DASH App to answe
 * [Dash](https://github.com/plotly/dash)
 * [Leaflet](https://github.com/thedirtyfew/dash-leaflet)
 * [Meteostat](https://github.com/meteostat)
+    * [My Guide on Meteostat](https://fossengineer.com/python-historical-weather-api-with-meteostat)
 
 ## Ways to Contribute
 
@@ -22,3 +23,15 @@ Using historical weather data together with location data in a DASH App to answe
 * Support extra evening code sessions:
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/FossEngineer)
+
+## :scroll: License
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License (GPL) version 3.0:
+
+    Freedom to use: You can use the software for any purpose, without any restrictions.
+    Freedom to study and modify: You can examine the source code, learn from it, and modify it to suit your needs.
+    Freedom to share: You can share the original software or your modified versions with others, so they can benefit from it too.
+    Copyleft: When you distribute the software or any derivative works, you must do so under the same GPL-3.0 license. This ensures that the software and its derivatives remain free and open-source.
+
+    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.

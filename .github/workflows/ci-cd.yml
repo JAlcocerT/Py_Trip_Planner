@@ -9,8 +9,7 @@ on:
       - main
 
 jobs:
-  build-and-push:
-    #runs-on: ubuntu-latest
+  build-and-push-arm32:
     runs-on: self-hosted
     steps:
     - name: Checkout repository #get the source code
