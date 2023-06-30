@@ -146,6 +146,8 @@ def update_weather_plots(click_lat_lng, start_date, end_date, boxplot_variable):
     nearest_lon = station['longitude'].values[0]
     ###
 
+    print(nearest_alt,nearest_lon,'versus: ',lat,lon)
+
     start = datetime(int(start_date[0:4]),
                     int(start_date[5:7]),
                     int(start_date[8:10]))

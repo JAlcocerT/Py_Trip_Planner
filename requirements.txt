@@ -7,3 +7,5 @@ pandas==1.2.4
 plotly==5.11.0
 
 meteostat==1.6.5
+
+openmeteo-py==0.0.1
