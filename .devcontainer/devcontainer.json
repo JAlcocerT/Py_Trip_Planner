@@ -1,0 +1,56 @@
+{
+    "name": "Example 1",
+    "build":{
+        "dockerfile": "Dockerfile",
+        "context": "../"
+    }, 
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "quarto.quarto",
+                "ms-azuretools.vscode-docker",
+                "ms-python.python",
+                "ms-vscode-remote.remote-containers",
+                "yzhang.markdown-all-in-one",
+                "redhat.vscode-yaml",
+                "ms-toolsai.jupyter",
+                "hediet.vscode-drawio"
+            ]
+        }
+    }  
+}
+
+// {
+//     "name": "${localEnv:ENV_NAME}",
+//     "build": {
+//         "dockerfile": "Dockerfile",
+//         "args": {"ENV_NAME": "${localEnv:ENV_NAME}",
+//                  "PYTHON_VER": "${localEnv:PYTHON_VER}"}, 
+//         "context": "."
+//     },
+//     "customizations": {
+//         "settings": {
+//             "python.defaultInterpreterPath": "/opt/conda/envs/${localEnv:ENV_NAME}/bin/python"
+//         },
+//         "vscode": {
+//             "extensions": [
+//                 "quarto.quarto",
+//                 "ms-azuretools.vscode-docker",
+//                 "ms-python.python",
+//                 "ms-vscode-remote.remote-containers",
+//                 "yzhang.markdown-all-in-one",
+//                 "redhat.vscode-yaml",
+//                 "ms-toolsai.jupyter"
+//             ]
+//         }
+//     },
+
+//     "mounts": [
+//             "source=${localEnv:CSV_PATH},target=/home/csv,type=bind,consistency=cache"
+//     ],
+//     "remoteEnv": {
+//         "MY_VAR": "${localEnv:MY_VAR}"
+//     },
+//     "runArgs": ["--env-file",".devcontainer/devcontainer.env"],
+//     "postCreateCommand": "python3 tests/test1.py"
+// }
