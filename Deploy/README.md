@@ -2,11 +2,14 @@
 
 Deploy me with docker!
 
+* [DockerHub - x86,ARM32/64](https://hub.docker.com/repository/docker/fossengineer/trip_planner/general)
+* [Build Locally](https://fossengineer.com/building-docker-container-images/#building-images-locally-x86-arm32-arm64)
+
 ## Usage
 
 Here are some example snippets to help you get started creating a container.
 
-### docker-compose (recommended, [click here for more info](https://docs.linuxserver.io/general/docker-compose))
+### docker-compose (recommended, [click here for more info](https://fossengineer.com/selfhosting-python-dash-apps-with-docker/#how-to-self-host-a-python-dash-apps-with-docker))
 
 ```yaml
 ---
@@ -28,9 +31,7 @@ docker run -p 8051:8050 --name trip-planner fossengineer/trip-planner:latest
 
 ## Supported Architectures
 
-We utilise the docker manifest for multi-platform awareness. More information is available from docker [here](https://github.com/docker/distribution/blob/master/docs/spec/manifest-v2-2.md#manifest-list) and our announcement [here](https://blog.linuxserver.io/2019/02/21/the-lsio-pipeline-project/).
-
-Simply pulling `lscr.io/linuxserver/emulatorjs:latest` should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+Simply pulling `fossengineer/trip-planner:latest` will retrieve the correct image for your arch, but you can also pull specific arch images via tags.
 
 The architectures supported by this image are:
 
