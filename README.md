@@ -1,11 +1,12 @@
 # Py_Trip_Planner
 
-Using historical weather data together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** - Trips Planning with Open Source Tools & Data.
+Using historical weather data together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** - Trips Planning with Open Source Tools & Data Analytics.
 
 * Deployed at <https://trip-planner.fossengineer.com>
+    * [DockerHub - x86,ARM32/64](https://hub.docker.com/repository/docker/fossengineer/trip_planner/general)
 * Further Description at: 
-    * <https://fossengineer.com/python-trip-planner/>
-    * <https://medium.com/@jalcocert/building-a-trip-planner-app-with-python-fb7529e7510d>
+    * For V1: Historical Weather - <https://fossengineer.com/python-trip-planner/>
+    * For V2: Historical and Forecast Weather - <https://fossengineer.com/trip-planner-with-weather/>
 
 ## Powered Thanks To
 
@@ -13,6 +14,8 @@ Using historical weather data together with location data in a DASH App to answe
 * [Leaflet](https://github.com/thedirtyfew/dash-leaflet)
 * [Meteostat](https://github.com/meteostat)
     * [My Guide on Meteostat](https://fossengineer.com/python-historical-weather-api-with-meteostat)
+* [Open-Meteo](https://open-meteo.com/)
+    * [Using Open-Meteo Py](https://fossengineer.com/python-weather-forecast-with-open-meteo-api/)
 
 ## Ways to Contribute
 

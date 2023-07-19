@@ -7,13 +7,12 @@ from datetime import datetime, timedelta, date
 
 from meteostat import Point, Daily
 from meteostat import Stations #new in v1.2
+from openmeteo_py import Hourly,Daily,Options,OWmanager #new in V2
 
 import plotly.express as px
 import dash_leaflet as dl
 
-#from jupyter_dash import JupyterDash
-
-#V1.3
+#V2
 
 #app = JupyterDash(__name__, external_stylesheets=['https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
 app = dash.Dash(__name__, external_stylesheets=['https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css'])
@@ -74,6 +73,44 @@ def plot_weather_data(lat, lon, start, end):
     return fig
 
 
+def plot_forecast_data_hourly(lat,lon): #new for V2
+
+    hourly_data = meteo["hourly"]
+
+    # check if 'time', 'apparent_temperature_max' and 'apparent_temperature_min' are in daily_data
+    if 'time' in daily_data and 'apparent_temperature' in hourly_data:
+        df_meteo_h = pd.DataFrame({
+            'time': hourly_data['time'],
+            'apparent_temperature': hourly_data['apparent_temperature'],
+            'windspeed_10m': hourly_data['windspeed_10m'],
+            'winddirection_10m': hourly_data['winddirection_10m'],
+            'precipitation': hourly_data['precipitation']
+        })
+    else:
+        print("'time', 'apparent_temperature' not found in daily data")
+
+
+
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatter(x=df_meteo_h['time'], y=df_meteo_h['apparent_temperature'], name='Temperature', line=dict(color='#21B1CF')))
+    fig.add_trace(go.Scatter(x=df_meteo_h['time'], y=df_meteo_h['windspeed_10m'], name='Wind Speed', line=dict(color='#b1b3b5'), yaxis='y2'))
+
+    fig.update_layout(
+        title='Forecast - Temperature and Wind Speed',
+        xaxis=dict(title='Time'),
+        yaxis=dict(title='Temperature (Celsius)', side='left', color='#21B1CF'),
+        yaxis2=dict(title='Wind Speed (km/h)', side='right', overlaying='y', color='#b1b3b5')
+    )
+
+    fig.update_layout(plot_bgcolor='#2E2E33',
+                        paper_bgcolor='#F5F5F5')
+
+    #fig.show()
+
+
+    return fig
+
 
 
 app.layout = html.Div(
@@ -99,7 +136,9 @@ app.layout = html.Div(
         style={'width': '100%', 'height': '50vh', 'margin': "auto", "display": "block"},
         center=[35, 25],
         zoom=4,
+        #click_lat_lng=True,
     ),
+    html.H2('Historical Weather Data', style={'textAlign': 'center', 'padding': '20px'}),
     dcc.Graph(id='weather-plot'),
     html.Label('Select a variable to display in the Boxplot:'),
     dcc.Dropdown(
@@ -113,8 +152,9 @@ app.layout = html.Div(
         value='tmax'
     ),
     dcc.Graph(id='tmax-boxplot'),
-   
-   html.Div(
+    html.H2('Forecasted Weather Data', style={'textAlign': 'center', 'padding': '20px'}),
+    dcc.Graph(id='forecast-plot'),
+    html.Div(
     [
         html.Div(
             [
@@ -128,6 +168,7 @@ app.layout = html.Div(
             style={'backgroundColor': '#F5F5F5', 'text-align': 'center'}
         ),
     ],
+    #style={'float': 'center', 'display': 'inline-block', 'backgroundColor': '#F5F5F5'}
     style={'display': 'flex', 'justify-content': 'center', 'align-items': 'center', 'display': 'inline-block', 'backgroundColor': '#F5F5F5'}
 
 )
@@ -147,13 +188,16 @@ def update_markers(click_lat_lng):
         click_lat_lng = [35, 25]
     return [
         dl.Marker(position=click_lat_lng, children=dl.Tooltip(f"({click_lat_lng[0]:.2f}, {click_lat_lng[1]:.2f})")),
+        #dl.Marker(position=[nearest_alt, nearest_lon], children=dl.Tooltip(f"({nearest_alt:.2f}, {nearest_lon:.2f})"))
         dl.CircleMarker(center=[nearest_lat, nearest_lon], color="#188399",)
     ]
 
+
 @app.callback(
-    [Output('weather-plot', 'figure'), Output('tmax-boxplot', 'figure')],
+    [Output('weather-plot', 'figure'), Output('tmax-boxplot', 'figure'), Output('forecast-plot','figure')],
     [Input('map', 'click_lat_lng'), Input('date-picker', 'start_date'), Input('date-picker', 'end_date'), Input('boxplot-variable', 'value')],
 )
+
 def update_weather_plots(click_lat_lng, start_date, end_date, boxplot_variable):
     global nearest_lat, nearest_lon
     if not click_lat_lng:
@@ -170,18 +214,24 @@ def update_weather_plots(click_lat_lng, start_date, end_date, boxplot_variable):
     nearest_lat = station['latitude'].values[0]
     nearest_lon = station['longitude'].values[0]
 
+
     start = datetime(int(start_date[0:4]),
                     int(start_date[5:7]),
                     int(start_date[8:10]))
     end = datetime(2022, 12, 31)
     
+    #line_plot = plot_weather_data(lat, lon, start, end)
     line_plot = plot_weather_data(nearest_lat, nearest_lon, start, end)
     
+    #box_plot = plot_tmax_boxplot(lat, lon, start, end, boxplot_variable)
     box_plot = plot_tmax_boxplot(nearest_lat, nearest_lon, start, end, boxplot_variable)
     
-    return line_plot, box_plot
+    forecast_plot = plot_forecast_data_hourly(nearest_lat, nearest_lon )
+
+    return line_plot, box_plot, forecast_plot
+    
+
     
 # Start of the application
 if __name__ == '__main__':
-    
     app.run_server(debug=False, host="0.0.0.0", port=8050)
