@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h2>Trips Planning with Open Source Tools & Data Analytics.</h2>
+  <h3>Plan your Trips according to Weather Patters</h3>
 </div>
 
 <div align="center">
@@ -21,7 +21,7 @@
   </a>
 </div>
 
-Using historical weather data together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** 
+Using **historical weather data** together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** 
 
 * [Deployed the App](https://github.com/JAlcocerT/Py_Trip_Planner/tree/main/Deploy)
 * Further Description at: 
@@ -37,7 +37,7 @@ Using historical weather data together with location data in a DASH App to answe
 
 > [And more...](https://jalcocert.github.io/JAlcocerT/trip-planner-with-weather/)
 
-## Ways to Contribute
+## Ways to Contribute 📢
 
 * Please feel free to fork the code - try it out for yourself and improve or add others tabs. The data that is queried give many possibilities to create awsome interactive visualizations.
 
@@ -46,17 +46,20 @@ Using historical weather data together with location data in a DASH App to answe
 * Support extra evening code sessions:
 
 <div align="center">
-  [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z1QPGUM)
+  <a href="https://ko-fi.com/Z8Z1QPGUM">
+    <img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="ko-fi">
+  </a>
 </div>
 
-## :scroll: License
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License (GPL) version 3.0:
+## License 📜
 
-    Freedom to use: You can use the software for any purpose, without any restrictions.
-    Freedom to study and modify: You can examine the source code, learn from it, and modify it to suit your needs.
-    Freedom to share: You can share the original software or your modified versions with others, so they can benefit from it too.
-    Copyleft: When you distribute the software or any derivative works, you must do so under the same GPL-3.0 license. This ensures that the software and its derivatives remain free and open-source.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the **GNU General Public License (GPL) version 3.0**:
 
-    This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.
+Freedom to use: You can use the software for any purpose, without any restrictions.
+Freedom to study and modify: You can examine the source code, learn from it, and modify it to suit your needs.
+Freedom to share: You can share the original software or your modified versions with others, so they can benefit from it too.
+Copyleft: When you distribute the software or any derivative works, you must do so under the same GPL-3.0 license. This ensures that the software and its derivatives remain free and open-source.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY.

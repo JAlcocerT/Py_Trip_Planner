@@ -16,7 +16,7 @@ Here are some example snippets to help you get started creating a container.
 version: "2"
 services:
   tripplanner:
-    image: fossengineer/trip_planner
+    image: ghcr.io/jalcocert/py_trip_planner #fossengineer/trip_planner
     container_name: tripplanner
     ports:
       - 8051:8050
