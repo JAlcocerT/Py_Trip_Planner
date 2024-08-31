@@ -1,21 +1,41 @@
-# Py_Trip_Planner
+<div align="center">
+  <h1>Python Trip Planner</h1>
+</div>
 
-Using historical weather data together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** - Trips Planning with Open Source Tools & Data Analytics.
+<div align="center">
+  <h2>Trips Planning with Open Source Tools & Data Analytics.</h2>
+</div>
 
-* Deployed at <https://trip-planner.fossengineer.com>
-    * [DockerHub - x86,ARM32/64](https://hub.docker.com/repository/docker/fossengineer/trip_planner/general)
+<div align="center">
+  <a href="https://github.com/JAlcocerT/Py_Trip_Planner?tab=GPL-3.0-1-ov-file" style="margin-right: 5px;">
+    <img alt="Code License" src="https://img.shields.io/badge/License-GPLv3-blue.svg" />
+  </a>
+  <a href="https://github.com/JAlcocerT/JAlcocerT/Py_Trip_Planner/actions/workflows/Dash_GHA_MultiArch.yml" style="margin-right: 5px;">
+    <img alt="GH Actions Workflow" src="https://github.com/JAlcocerT/Py_Trip_Planner/actions/workflows/Dash_GHA_MultiArch.yml/badge.svg" />
+  </a>
+  <a href="https://GitHub.com/JAlcocerT/Py_Trip_Planner/graphs/commit-activity" style="margin-right: 5px;">
+    <img alt="Mantained" src="https://img.shields.io/badge/Maintained%3F-no-grey.svg" />
+  </a>
+  <a href="https://www.python.org/downloads/release/python-3819/">
+    <img alt="Python Version" src="https://img.shields.io/badge/python-3.8-blue.svg" />
+  </a>
+</div>
+
+Using historical weather data together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** 
+
+* [Deployed the App](https://github.com/JAlcocerT/Py_Trip_Planner/tree/main/Deploy)
 * Further Description at: 
-    * For V1: Historical Weather - <https://fossengineer.com/python-trip-planner/>
-    * For V2: Historical and Forecast Weather - <https://fossengineer.com/trip-planner-with-weather/>
+    * For V1: Historical Weather, [MeteoStat](https://jalcocert.github.io/JAlcocerT/python-trip-planner/)
+    * For V2: Historical and [Forecast Weather](https://jalcocert.github.io/JAlcocerT/python-weather-forecast-with-open-meteo-api/)
 
-## Powered Thanks To
+## Powered Thanks To ❤️
 
 * [Dash](https://github.com/plotly/dash)
 * [Leaflet](https://github.com/thedirtyfew/dash-leaflet)
 * [Meteostat](https://github.com/meteostat)
-    * [My Guide on Meteostat](https://fossengineer.com/python-historical-weather-api-with-meteostat)
 * [Open-Meteo](https://open-meteo.com/)
-    * [Using Open-Meteo Py](https://fossengineer.com/python-weather-forecast-with-open-meteo-api/)
+
+> [And more...](https://jalcocert.github.io/JAlcocerT/trip-planner-with-weather/)
 
 ## Ways to Contribute
 
@@ -25,7 +45,9 @@ Using historical weather data together with location data in a DASH App to answe
 
 * Support extra evening code sessions:
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/FossEngineer)
+<div align="center">
+  [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/Z8Z1QPGUM)
+</div>
 
 ## :scroll: License
 

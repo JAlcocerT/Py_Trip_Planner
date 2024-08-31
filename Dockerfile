@@ -1,6 +1,9 @@
-# Use the official lightweight Python image.
 # https://hub.docker.com/_/python
 FROM python:3.8
+LABEL org.opencontainers.image.source=https://github.com/JAlcocerT/Py_Trip_Planner
+LABEL org.opencontainers.image.description="Python Trip Planner with Weather"
+LABEL org.opencontainers.image.licenses=GPL-3.0
+LABEL maintainer="JAlcocerT"
 
 # Copy local code to the container image.
 ENV APP_HOME /app
