@@ -1,5 +1,6 @@
 # https://hub.docker.com/_/python
-FROM python:3.8
+FROM python:3.11   
+# 3.8
 LABEL org.opencontainers.image.source=https://github.com/JAlcocerT/Py_Trip_Planner
 LABEL org.opencontainers.image.description="Python Trip Planner with Weather"
 LABEL org.opencontainers.image.licenses=GPL-3.0
@@ -33,6 +34,6 @@ CMD python ./app/app.py
 #Pushing the image to the registry:
 
 ##dockerhub
-#docker build -t reisikei/pytripplanner .
+#docker build -t jalcocert/pytripplanner .
 #docker login
-#docker push reisikei/pytripplanner
+#docker push jalcocert/pytripplanner

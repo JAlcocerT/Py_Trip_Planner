@@ -1,11 +1,33 @@
 dash==2.7.0 
 
+#pip install dash-chat
+dash-chat==0.1.0 #https://pypi.org/project/dash-chat/
+
 dash_leaflet==0.1.23
 
-pandas==1.2.4
-plotly==5.11.0
+#pandas==1.2.4
+plotly==5.24.1
 
-meteostat==1.6.5
+meteostat==1.6.8
 openmeteo-py==0.0.1
+
+setuptools=75.6.0 #pip install setuptools
+
+#pip install --upgrade numpy meteostat plotly
+
+
+###pip install -r requirements.txt
+
+openai==1.58.1 #https://pypi.org/project/openai/
+python-dotenv==1.0.1
+
+numpy==2.2.1
+pandas==2.2.3
+tabulate==0.9.0
+
+langchain==0.3.13
+langchain_experimental==0.3.4
+langchain-community==0.3.13
+
 
 ###pip install -r requirements.txt
