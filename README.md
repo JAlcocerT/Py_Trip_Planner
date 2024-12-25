@@ -23,10 +23,50 @@
 
 Using **historical weather data** together with location data in a DASH App to answer your question: **How is the expected weather at a particular period of the year in my destination?** 
 
-* [Deployed the App](https://github.com/JAlcocerT/Py_Trip_Planner/tree/main/Deploy)
+* [Deploy the App](https://github.com/JAlcocerT/Py_Trip_Planner/tree/main/Deploy)
 * Further Description at: 
-    * For V1: Historical Weather, [MeteoStat](https://jalcocert.github.io/JAlcocerT/python-trip-planner/)
-    * For V2: Historical and [Forecast Weather](https://jalcocert.github.io/JAlcocerT/python-weather-forecast-with-open-meteo-api/)
+  * For V1: Historical Weather, with [MeteoStat](https://jalcocert.github.io/JAlcocerT/python-trip-planner/)
+  * For V2: Historical and [Forecasted Weather](https://jalcocert.github.io/JAlcocerT/python-weather-forecast-with-open-meteo-api/)
+  * For V3: Adding AI capabilities - [Chat with Weather Data DF via LangChain](https://jalcocert.github.io/JAlcocerT/using-langchain-with-pandas-df/)
+
+
+
+###$ Quick Setup
+
+> [!IMPORTANT]
+> Prepare the API key for v3
+
+
+<details>
+  <summary>Using Python Venv...👇</summary>
+  &nbsp;
+
+
+```sh
+#sudo apt install python3.12-venv
+python3 -m venv trip_planner_venv
+
+#Unix
+source trip_planner_venv/bin/activate
+#.\trip_planner_venv\Scripts\activate #Windows
+
+pip install -r requirements.txt
+
+
+source .env
+#export OPENAI_API_KEY="your-api-key-here"
+#set OPENAI_API_KEY=your-api-key-here
+#$env:OPENAI_API_KEY="your-api-key-here"
+echo $GROQ_API_KEY $OPENAI_API_KEY $ANTHROPIC_API_KEY
+
+streamlit run Z_ST_AIssistant_v2.py
+
+# git add .
+# git commit -m "better st offer analyzer"
+# git push
+```
+
+</details>
 
 ## Powered Thanks To ❤️
 

@@ -1,9 +1,14 @@
 # Local Deployment
 
-Deploy me with docker!
+[**Deploy**](https://fossengineer.com/understanding-containers-for-selfhosting/) me with docker!
+
+
+**Container Image** creation:
 
 * [DockerHub - x86,ARM32/64](https://hub.docker.com/repository/docker/fossengineer/trip_planner/general)
 * [Build Locally](https://fossengineer.com/building-docker-container-images/#building-images-locally-x86-arm32-arm64)
+* Use [Github Actions MultiArch CI/CD](https://jalcocert.github.io/JAlcocerT/github-actions-use-cases/#actions-cicd-for-python-projects)
+
 
 ## Usage
 
@@ -33,7 +38,7 @@ docker run -p 8051:8050 --name trip-planner fossengineer/trip-planner:latest
 
 Simply pulling `fossengineer/trip-planner:latest` will retrieve the correct image for your arch, but you can also pull specific arch images via tags.
 
-The architectures supported by this image are:
+The **architectures supported** by this container image are:
 
 | Architecture | Available | Tag |
 | :----: | :----: | ---- |

@@ -6,3 +6,4 @@ services:
     ports:
       - 8051:8050
     restart: unless-stopped
+    command: python3 ./app/app.py
