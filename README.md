@@ -30,6 +30,8 @@ Using **historical weather data** together with location data in a DASH App to a
   * For V3: Adding AI capabilities - [Chat with Weather Data DF via LangChain](https://jalcocert.github.io/JAlcocerT/using-langchain-with-pandas-df/)
 
 
+![Trip Planner Graph](./images/trip-planner-main-graph.png)
+
 
 #### Quick Setup
 
