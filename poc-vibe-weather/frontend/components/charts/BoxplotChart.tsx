@@ -92,21 +92,52 @@ export default function BoxplotChart({ data, variable }: BoxplotChartProps) {
           legendPosition: "middle",
           legendOffset: -44,
         }}
-        tooltip={({ color, ...datum }) => {
-          // Nivo BoxPlot passes a `values` array: [min, q1, median, q3, max]
-          const v = datum.values ?? [];
-          const fmt = (n: number | undefined) =>
-            n != null ? n.toFixed(1) : "—";
+        tooltip={(datum) => {
+          // In @nivo/boxplot 0.87, stats live under datum.data
+          // values = [P10, Q1, Median, Q3, P90], extrema = [min, max]
+          const f = (datum as Record<string, unknown>).formatted as Record<string, unknown> | undefined;
+          const data = (datum as Record<string, unknown>).data as Record<string, unknown> | undefined;
+          const fv = Array.isArray(f?.values) ? (f!.values as string[]) : [];
+          const fe = Array.isArray(f?.extrema) ? (f!.extrema as string[]) : [];
+          const fq = Array.isArray(f?.quantiles) ? (f!.quantiles as string[]) : [];
+
+          const rows: [string, string][] = [
+            [`P${fq[4] ?? 90}`,  fv[4] ?? "—"],
+            [`Q3 / P${fq[3] ?? 75}`, fv[3] ?? "—"],
+            [`Median / P${fq[2] ?? 50}`, fv[2] ?? "—"],
+            [`Q1 / P${fq[1] ?? 25}`, fv[1] ?? "—"],
+            [`P${fq[0] ?? 10}`,  fv[0] ?? "—"],
+            ["Max",              fe[1] ?? "—"],
+            ["Min",              fe[0] ?? "—"],
+            ["Mean",             String(f?.mean ?? data?.mean ?? "—")],
+            ["n",                String(f?.n    ?? data?.n    ?? "—")],
+          ];
+
           return (
             <div
-              style={{ background: "white", border: "1px solid #e2e8f0" }}
-              className="rounded-lg px-3 py-2 shadow-md text-xs space-y-0.5"
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: 6,
+                padding: "8px 12px",
+                fontSize: 12,
+                boxShadow: "0 2px 8px rgba(0,0,0,.12)",
+                minWidth: 160,
+              }}
             >
-              <p className="font-semibold mb-1">{datum.group}</p>
-              <p>Median&nbsp;&nbsp;<span className="font-medium">{fmt(v[2])}</span></p>
-              <p>Q1 / Q3&nbsp;&nbsp;{fmt(v[1])} / {fmt(v[3])}</p>
-              <p>Min / Max&nbsp;&nbsp;{fmt(v[0])} / {fmt(v[4])}</p>
-              <p className="text-slate-400">n = {datum.n ?? "—"}</p>
+              <p style={{ fontWeight: 600, marginBottom: 6 }}>
+                {String((datum as Record<string, unknown>).label ?? (datum as Record<string, unknown>).group ?? "")}
+              </p>
+              <table style={{ borderCollapse: "collapse", width: "100%" }}>
+                <tbody>
+                  {rows.map(([label, value]) => (
+                    <tr key={label}>
+                      <td style={{ color: "#94a3b8", paddingRight: 16, paddingBottom: 2 }}>{label}</td>
+                      <td style={{ fontWeight: 500, textAlign: "right" }}>{value}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           );
         }}
