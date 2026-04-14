@@ -69,7 +69,8 @@ export default function BoxplotChart({ data, variable }: BoxplotChartProps) {
       <ResponsiveBoxPlot
         data={chartData}
         groups={groups}
-        theme={nivoTheme}
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        theme={nivoTheme as any}
         margin={{ top: 8, right: 16, bottom: 40, left: 52 }}
         minValue="auto"
         maxValue="auto"
