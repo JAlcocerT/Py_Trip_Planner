@@ -654,6 +654,9 @@ video {
 .mt-1 {
   margin-top: 0.25rem;
 }
+.mr-1 {
+  margin-right: 0.25rem;
+}
 .inline-block {
   display: inline-block;
 }
@@ -690,6 +693,12 @@ video {
 .h-full {
   height: 100%;
 }
+.h-3 {
+  height: 0.75rem;
+}
+.h-7 {
+  height: 1.75rem;
+}
 .max-h-56 {
   max-height: 14rem;
 }
@@ -713,6 +722,9 @@ video {
 }
 .w-full {
   width: 100%;
+}
+.w-3 {
+  width: 0.75rem;
 }
 .min-w-\[28px\] {
   min-width: 28px;

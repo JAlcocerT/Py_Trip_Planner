@@ -59,6 +59,30 @@ def get_stations():
     return _df_to_geojson(df)
 
 
+@router.get("/{station_id}")
+def get_station(station_id: str):
+    """Return metadata for a single station by ID (used to restore URL state)."""
+    try:
+        df = _load_stations()
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Failed to load stations: {exc}")
+
+    if station_id not in df.index:
+        raise HTTPException(status_code=404, detail=f"Station '{station_id}' not found")
+
+    row = df.loc[station_id]
+    return {
+        "id": station_id,
+        "name": str(row.get("name", "")),
+        "country": str(row.get("country", "")),
+        "latitude": round(float(row["latitude"]), 5),
+        "longitude": round(float(row["longitude"]), 5),
+        "elevation": round(float(row["elevation"]), 1)
+        if not pd.isna(row.get("elevation"))
+        else None,
+    }
+
+
 @router.get("/nearest")
 def get_nearest_station(lat: float, lon: float):
     """Return the single nearest Meteostat station to the given coordinates."""
