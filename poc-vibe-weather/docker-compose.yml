@@ -6,13 +6,15 @@ services:
       - "8000:8000"
 
   frontend:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args:
+        # Passed at build time so Next.js bakes the correct URL into the bundle.
+        # Inside the compose network the frontend container reaches the backend
+        # by service name, not localhost.
+        API_URL: http://backend:8000
     restart: unless-stopped
     ports:
       - "3000:3000"
-    environment:
-      # Server-side only — Next.js proxies /api/* to this URL.
-      # The browser never sees this value; it always calls relative /api/* paths.
-      API_URL: http://backend:8000
     depends_on:
       - backend

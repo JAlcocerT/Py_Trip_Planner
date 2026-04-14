@@ -47,7 +47,7 @@ function ChartCard({
   loading: boolean;
   error: string | null;
   actions?: React.ReactNode;
-  contentRef?: React.RefObject<HTMLDivElement>;
+  contentRef?: React.RefObject<HTMLDivElement | null>;
   children: React.ReactNode;
 }) {
   return (

@@ -2,6 +2,11 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
+# API_URL is needed at build time because Next.js bakes rewrite destinations
+# into the bundle during `next build`. docker-compose passes this as a build arg.
+ARG API_URL=http://localhost:8000
+ENV API_URL=$API_URL
+
 COPY package.json package-lock.json* ./
 RUN npm install --legacy-peer-deps
 
