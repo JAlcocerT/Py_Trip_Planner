@@ -27,10 +27,12 @@ Using **historical weather data** together with location data in a DASH App to a
 * Further Description at: 
   * For V1: Historical Weather, with [MeteoStat](https://jalcocert.github.io/JAlcocerT/python-trip-planner/)
   * [For V2](https://github.com/JAlcocerT/Py_Trip_Planner/releases): Historical and [Forecasted Weather](https://jalcocert.github.io/JAlcocerT/python-weather-forecast-with-open-meteo-api/)
-  * For V3: Adding AI capabilities - [Chat with Weather Data DF via LangChain](https://jalcocert.github.io/JAlcocerT/using-langchain-with-pandas-df/)
-
 
 ![Trip Planner Graph](./images/trip-planner-main-graph.png)
+
+  * For V3: ~~Adding AI capabilities - [Chat with Weather Data DF via LangChain](https://jalcocert.github.io/JAlcocerT/using-langchain-with-pandas-df/)~~ see `poc-vibe-weather`
+
+
 
 
 #### Quick Setup

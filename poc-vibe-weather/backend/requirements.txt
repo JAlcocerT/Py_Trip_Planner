@@ -1,0 +1,9 @@
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+httpx==0.28.1
+pydantic==2.10.3
+meteostat==1.6.8
+openmeteo-py==0.0.1
+fastapi-cache2==0.2.2
+pandas==2.2.3
+numpy==2.2.1

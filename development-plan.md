@@ -2,18 +2,21 @@
 
 ## Repository Location
 
-New project lives as a sibling to the current repo:
+New project lives **inside** the current repo as a subfolder:
 
 ```
-C:\Users\j--e-\Desktop\
-├── Py_Trip_Planner\        ← existing Dash app (v2, keep untouched)
-└── Trip_Planner_v3\        ← new project (this plan)
+C:\Users\j--e-\Desktop\Py_Trip_Planner\
+├── app/                        ← existing Dash app (v2, untouched)
+├── poc-vibe-weather/           ← new project (this plan)
+├── brd.md
+├── development-plan.md
+└── tech-stack.md
 ```
 
-Internal folder structure of `Trip_Planner_v3`:
+Internal folder structure of `poc-vibe-weather/`:
 
 ```
-Trip_Planner_v3/
+poc-vibe-weather/
 ├── frontend/               # Next.js 15 app
 ├── backend/                # FastAPI app
 ├── docker-compose.yml      # runs both containers together

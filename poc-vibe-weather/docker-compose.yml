@@ -1,0 +1,18 @@
+services:
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      # Server-side only — Next.js proxies /api/* to this URL.
+      # The browser never sees this value; it always calls relative /api/* paths.
+      API_URL: http://backend:8000
+    depends_on:
+      - backend

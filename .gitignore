@@ -1,2 +1,5 @@
 *_venv/
 .env
+
+.venv/
+node_modules/

@@ -51,6 +51,7 @@ Browser (Next.js + shadcn/ui)
   - Dual-line Tmin / Tmax with a fill band between them
   - Tooltip on hover with exact values + date
   - Theming via Tailwind CSS variables — dark mode for free
+  - https://ui.shadcn.com/charts/area#charts
 
 ### Boxplot / Distribution Chart
 - **Current:** Plotly `px.box()` grouped by month, dropdown to switch variable
