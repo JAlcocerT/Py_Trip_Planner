@@ -1,9 +1,16 @@
 *_venv/
 .env
+.env.local
 
 .venv/
+venv/
 node_modules/
+.next/
 
 *.pyc
 __pycache__/
-*.gz*
+
+# Meteostat local data cache (downloaded weather archives, not code)
+*.gz
+*.pack.gz
+*.bin.gz
