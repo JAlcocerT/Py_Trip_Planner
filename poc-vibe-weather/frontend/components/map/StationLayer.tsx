@@ -1,36 +1,37 @@
 "use client";
 
 import { Source, Layer } from "react-map-gl/maplibre";
-import type { CircleLayerSpecification, SymbolLayerSpecification } from "maplibre-gl";
+import type { CircleLayerSpecification } from "maplibre-gl";
 
 interface StationLayerProps {
   geojson: GeoJSON.FeatureCollection;
 }
 
-const clusterCircle: CircleLayerSpecification = {
+// Outer ring — size encodes cluster magnitude, no text needed
+const clusterRing: CircleLayerSpecification = {
   id: "clusters",
   type: "circle",
   source: "stations",
   filter: ["has", "point_count"],
   paint: {
     "circle-color": "#3b82f6",
-    "circle-radius": ["step", ["get", "point_count"], 16, 100, 22, 750, 30],
-    "circle-opacity": 0.85,
+    "circle-radius": ["step", ["get", "point_count"], 14, 100, 20, 750, 28],
+    "circle-opacity": 0.25,
+    "circle-stroke-width": 2,
+    "circle-stroke-color": "#3b82f6",
   },
 };
 
-const clusterCount: SymbolLayerSpecification = {
-  id: "cluster-count",
-  type: "symbol",
+// Inner dot for clusters
+const clusterDot: CircleLayerSpecification = {
+  id: "cluster-dot",
+  type: "circle",
   source: "stations",
   filter: ["has", "point_count"],
-  layout: {
-    "text-field": "{point_count_abbreviated}",
-    "text-font": ["Open Sans Bold"],
-    "text-size": 12,
-  },
   paint: {
-    "text-color": "#ffffff",
+    "circle-color": "#3b82f6",
+    "circle-radius": ["step", ["get", "point_count"], 6, 100, 9, 750, 13],
+    "circle-opacity": 0.9,
   },
 };
 
@@ -58,8 +59,8 @@ export default function StationLayer({ geojson }: StationLayerProps) {
       clusterMaxZoom={6}
       clusterRadius={50}
     >
-      <Layer {...clusterCircle} />
-      <Layer {...clusterCount} />
+      <Layer {...clusterRing} />
+      <Layer {...clusterDot} />
       <Layer {...stationDots} />
     </Source>
   );

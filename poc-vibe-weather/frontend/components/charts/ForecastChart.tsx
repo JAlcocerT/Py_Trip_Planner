@@ -106,6 +106,7 @@ export default function ForecastChart({ data }: ForecastChartProps) {
           <ComposedChart
             data={chartData}
             margin={{ top: 8, right: 16, left: 0, bottom: 0 }}
+            accessibilityLayer={false}
           >
             {nightRanges.map((r, i) => (
               <ReferenceArea

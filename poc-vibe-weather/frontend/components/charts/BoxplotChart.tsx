@@ -92,15 +92,24 @@ export default function BoxplotChart({ data, variable }: BoxplotChartProps) {
           legendPosition: "middle",
           legendOffset: -44,
         }}
-        tooltip={({ color, ...datum }) => (
-          <div className="rounded-lg border bg-background px-3 py-2 shadow-md text-xs space-y-0.5">
-            <p className="font-medium">{datum.group}</p>
-            <p>Median: <span className="font-medium">{datum.median?.toFixed(1)}</span></p>
-            <p>Q1 / Q3: {datum.quantiles?.[0]?.toFixed(1)} / {datum.quantiles?.[2]?.toFixed(1)}</p>
-            <p>Min / Max: {datum.extremes?.[0]?.toFixed(1)} / {datum.extremes?.[1]?.toFixed(1)}</p>
-            <p className="text-muted-foreground">n = {datum.n}</p>
-          </div>
-        )}
+        tooltip={({ color, ...datum }) => {
+          // Nivo BoxPlot passes a `values` array: [min, q1, median, q3, max]
+          const v = datum.values ?? [];
+          const fmt = (n: number | undefined) =>
+            n != null ? n.toFixed(1) : "—";
+          return (
+            <div
+              style={{ background: "white", border: "1px solid #e2e8f0" }}
+              className="rounded-lg px-3 py-2 shadow-md text-xs space-y-0.5"
+            >
+              <p className="font-semibold mb-1">{datum.group}</p>
+              <p>Median&nbsp;&nbsp;<span className="font-medium">{fmt(v[2])}</span></p>
+              <p>Q1 / Q3&nbsp;&nbsp;{fmt(v[1])} / {fmt(v[3])}</p>
+              <p>Min / Max&nbsp;&nbsp;{fmt(v[0])} / {fmt(v[4])}</p>
+              <p className="text-slate-400">n = {datum.n ?? "—"}</p>
+            </div>
+          );
+        }}
       />
     </div>
   );

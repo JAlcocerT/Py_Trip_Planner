@@ -35,6 +35,7 @@ export default function HistoricalChart({ data }: HistoricalChartProps) {
         <AreaChart
           data={chartData}
           margin={{ top: 8, right: 16, left: 0, bottom: 0 }}
+          accessibilityLayer={false}
         >
           <defs>
             <linearGradient id="gradTmax" x1="0" y1="0" x2="0" y2="1">

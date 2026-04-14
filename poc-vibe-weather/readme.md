@@ -22,3 +22,5 @@
   npm run dev
   Open: http://localhost:3000
 ```
+
+Using https://recharts.github.io/ inspired at https://ui.shadcn.com/docs/components/radix/chart
