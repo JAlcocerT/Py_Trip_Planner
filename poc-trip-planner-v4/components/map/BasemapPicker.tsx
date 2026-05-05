@@ -18,16 +18,16 @@ const osmStyle: StyleSpecification = {
   layers: [{ id: "osm-tiles", type: "raster", source: "osm" }],
 };
 
-const cartoStyle = (variant: "voyager" | "dark-matter"): StyleSpecification => ({
+const cartoStyle = (path: string): StyleSpecification => ({
   version: 8,
   sources: {
     carto: {
       type: "raster",
       tiles: [
-        `https://a.basemaps.cartocdn.com/${variant}/{z}/{x}/{y}.png`,
-        `https://b.basemaps.cartocdn.com/${variant}/{z}/{x}/{y}.png`,
-        `https://c.basemaps.cartocdn.com/${variant}/{z}/{x}/{y}.png`,
-        `https://d.basemaps.cartocdn.com/${variant}/{z}/{x}/{y}.png`,
+        `https://a.basemaps.cartocdn.com/${path}/{z}/{x}/{y}.png`,
+        `https://b.basemaps.cartocdn.com/${path}/{z}/{x}/{y}.png`,
+        `https://c.basemaps.cartocdn.com/${path}/{z}/{x}/{y}.png`,
+        `https://d.basemaps.cartocdn.com/${path}/{z}/{x}/{y}.png`,
       ],
       tileSize: 256,
       attribution: "© OpenStreetMap, © CARTO",
@@ -39,8 +39,8 @@ const cartoStyle = (variant: "voyager" | "dark-matter"): StyleSpecification => (
 
 export const BASEMAPS: Record<BasemapKey, StyleSpecification> = {
   osm: osmStyle,
-  "carto-voyager": cartoStyle("voyager"),
-  "carto-dark": cartoStyle("dark-matter"),
+  "carto-voyager": cartoStyle("rastertiles/voyager"),
+  "carto-dark": cartoStyle("rastertiles/dark_all"),
 };
 
 const LABELS: Record<BasemapKey, string> = {

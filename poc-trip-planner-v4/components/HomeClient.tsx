@@ -22,6 +22,17 @@ import { exportAsPng, downloadCsv } from "@/lib/exportChart";
 import type { Station, BoxplotVariable } from "@/lib/types";
 import type { FlyToTarget } from "@/components/map/TripMap";
 
+function defaultDateRange() {
+  const end = new Date();
+  end.setUTCDate(end.getUTCDate() - 1);
+  const start = new Date(end);
+  start.setUTCFullYear(start.getUTCFullYear() - 3);
+  const fmt = (d: Date) => d.toISOString().slice(0, 10);
+  return { start: fmt(start), end: fmt(end) };
+}
+
+const DEFAULT_RANGE = defaultDateRange();
+
 const TripMap = dynamic(() => import("@/components/map/TripMap"), {
   ssr: false,
   loading: () => (
@@ -83,8 +94,8 @@ export default function HomeClient() {
   const [sLon, setSLon] = useQueryState("lon", parseAsFloat);
   const [sName, setSName] = useQueryState("name", parseAsString);
   const [sCountry, setSCountry] = useQueryState("country", parseAsString);
-  const [startDate, setStartDate] = useQueryState("start", parseAsString.withDefault("2021-01-01"));
-  const [endDate, setEndDate] = useQueryState("end", parseAsString.withDefault("2022-12-31"));
+  const [startDate, setStartDate] = useQueryState("start", parseAsString.withDefault(DEFAULT_RANGE.start));
+  const [endDate, setEndDate] = useQueryState("end", parseAsString.withDefault(DEFAULT_RANGE.end));
   const [varParam, setVarParam] = useQueryState("var", parseAsString.withDefault("tmax"));
 
   const selectedStation = useMemo<Station | null>(() => {
